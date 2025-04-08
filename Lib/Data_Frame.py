@@ -2,16 +2,21 @@
 #Date Last Updated: 4-7-2025
 
 #%% MODULE BEGINS
-Sales = 'Lib/Sales'
+Data_Frame = 'Lib/DataFrame'
 '''
 Version: v0.1
 Description:
-    the second parent class, Sales, will define the utility functions used by the child class
-    - mean will calculate the average apperances of a desired element
-    - median will calculate the middle value of numerical data such as price
-      - after the data is sorted
-    - mode will calculate which of the desired variation information appears the most often
-    - the standard deviation (std) will find the value of how far the data is from the mean (average)
+    this child class of the parent class "frequency", will read from the input .....csv file that stores all of our order information
+    - the orders are broken into columns with size, flavor, toppings, and price
+    - the rows are the order numbers themselves
+
+  to vizualize the data using violin plots, whisker-box plots, and scatter plots, the data from each column will be broken up and compare between the rows
+    - since there is a variety of ways the compare orders, we can look at individual elements, or combination of elements to compare using different plots
+
+  to query the data for search and display, we can set multiple conditions to compare each rows
+    - such as if a snowball is a size "L" and flavor "tiger blood"
+    - this is done by using & or || expressions to ensure that we are setting the data to be compared by more than one condition
+      - this can set each row value to true or false depending on this boolean expression
 Authors:
     Tyler Guidry, Brandon Stromeyer
 Date Created : 4-7-2025
@@ -27,7 +32,7 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 #custom imports
-
+import Frequency
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,5 +59,4 @@ def main():
 if __name__ == "__main__":
     print(f"\"{module_name_gl}\" module begins.")
     main()
-
 

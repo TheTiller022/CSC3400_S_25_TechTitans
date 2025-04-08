@@ -1,7 +1,12 @@
-# child class of Sales (child class 2)
+#Version: v0.1
+#Date Last Updated: 4-7-2025
+
+#%% MODULE BEGINS
+Sales_Calculation = 'Lib/Sales_Calculation'
 '''
-class Sales_Calculations(Sales):
-  this class will start by reading the data from the Dataframe we made in Dataframe.py (child class 1)
+Version: v0.1
+Description:
+    this class will start by reading the data from the Dataframe we made in Dataframe.py (child class 1)
   it will also be able to vizualize specific data depending on what the user inputs 
 
     - joint count will measure how many times 2 conditions occur together (aka small and tigerblood)
@@ -23,7 +28,45 @@ class Sales_Calculations(Sales):
         - this more or less means we can pull individual orders and see how it strays away from an average vector
     - calculate dot product
       - dot product will allow us to compare specific variations to the price of the order, the similarity between 2 orders, or certain trends in the data
-    
-
+Authors:
+    Tyler Guidry, Brandon Stromeyer
+Date Created : 4-7-2025
+Date Last Updated: 4-7-2025
+Doc:
+    <***>
+Notes:
+    Applying the templete
 '''
-import Sales.py
+#%% IMPORTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__ == "__main__":
+    import os
+    #os.chdir("./../..")
+#
+#custom imports
+import Sales
+#other imports
+
+#%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Global declarations Start Here
+
+#Class definitions Start Here
+
+#Function definitions Start Here
+def main():
+    pass
+#
+#%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Main Self-run block
+if __name__ == "__main__":
+    print(f"\"{module_name_gl}\" module begins.")
+    main()
