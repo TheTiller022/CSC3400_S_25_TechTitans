@@ -2,7 +2,7 @@
 #Date Last Updated: 4-7-2025
 
 #%% MODULE BEGINS
-Data_Frame = 'Lib/DataFrame'
+Data_Frame = 'DataFrame'
 '''
 Version: v0.1
 Description:

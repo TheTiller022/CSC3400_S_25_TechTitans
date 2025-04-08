@@ -2,7 +2,7 @@
 #Date Last Updated: 4-7-2025
 
 #%% MODULE BEGINS
-Sales_Calculation = 'Lib/Sales_Calculation'
+Sales_Calculation = 'Sales_Calculation'
 '''
 Version: v0.1
 Description:
