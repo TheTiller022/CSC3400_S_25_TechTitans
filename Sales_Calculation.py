@@ -36,6 +36,23 @@ Doc:
     <***>
 Notes:
     Applying the templete
+
+###########################################################################################################################
+
+Version: v0.1
+Description:
+    the second parent class, Sales, will define the utility functions used by the child class
+    - mean will calculate the average apperances of a desired element
+    - median will calculate the middle value of numerical data such as price
+      - after the data is sorted
+    - mode will calculate which of the desired variation information appears the most often
+    - the standard deviation (std) will find the value of how far the data is from the mean (average)
+Authors:
+    Tyler Guidry, Brandon Stromeyer
+Date Created : 4-7-2025
+Date Last Updated: 4-7-2025
+Doc:
+    <***>
 '''
 #%% IMPORTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if __name__ == "__main__":
@@ -43,7 +60,7 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 #custom imports
-import Sales
+
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +76,11 @@ import Sales
 #Global declarations Start Here
 
 #Class definitions Start Here
-
+class Sales:
+    sales = 0
+    
+class Sales_Calculations(Sales):
+    sales = 0
 #Function definitions Start Here
 def main():
     pass
