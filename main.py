@@ -40,6 +40,24 @@ import Lib.Sales_Calculation
 #Global declarations Start Here
 
 #Class definitions Start Here
+# main.py
+
+from Lib.Frequency import Frequency
+
+def main():
+    f = Frequency()
+
+    columns_to_plot = ['Flavor', 'Size', 'Topping', 'Price']
+    for col in columns_to_plot:
+        print(f"Generating plot for {col}...")
+        f.visualize_column(col)
+
+    print("\nStrawberry Orders:")
+    result = f.query_data('Flavor', 'Strawberry')
+    print(result)
+
+if __name__ == '__main__':
+    main()
 
 #Function definitions Start Here
 def main():
