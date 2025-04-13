@@ -48,6 +48,10 @@ if __name__ == "__main__":
 #
 #custom imports
 
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,10 +68,6 @@ if __name__ == "__main__":
 
 #Class definitions Start Here
 # Parent class 1
-
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
 
 class Frequency:
     def __init__(self):
