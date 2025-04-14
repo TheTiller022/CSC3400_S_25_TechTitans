@@ -22,8 +22,8 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 #custom imports
-import Input.Input_Module
-import Lib.Data_Frame
+#import Input.Input_Module
+#import Lib.Data_Frame
 import Lib.Sales_Calculation
 #other imports
 
@@ -43,6 +43,7 @@ import Lib.Sales_Calculation
 # main.py
 
 from Lib.Frequency import Frequency
+from Lib.Data_Frame import Data_Frame
 
 def main():
     f = Frequency()
@@ -56,6 +57,11 @@ def main():
     result = f.query_data('Flavor', 'Strawberry')
     print(result)
 
+    d = Data_Frame()
+    d.visualize_violin('Flavor')
+    d.visualize_boxplot('Size')
+    d.visualize_scatterplot('Flavor')
+
 if __name__ == '__main__':
     main()
 
@@ -67,5 +73,5 @@ def main():
 
 #Main Self-run block
 if __name__ == "__main__":
-    print(f"\"{module_name_gl}\" module begins.")
+    #print(f"\"{module_name_gl}\" module begins.")
     main()
