@@ -1,14 +1,102 @@
 Flavor,Price,Size,Topping,Sale ID
-Cherry,2,S,None,1
-Strawberry,2.5,M,Gummy Worms,2
-Cherry,3,L,Condensed Milk,3
-Bubblegum,2.5,M,None,4
-Spearmint,2.5,M,None,5
-Watermelon,2,S,Gummy Worms,6
-Green Apple,2,S,None,7
-Grape,3,L,Nerds,8
-Cotton Candy,2,S,Condensed Milk,9
-Peach,2,S,None,10
-Coconut,2,S,None,11
-Cherry,3,L,None,12
-Strawberry,2.5,M,Nerds,13
+Flavor,Price,Size,Topping,Sale ID
+Cherry,3.5,L,Gummy Worms,1
+Grape,2.0,S,Gummy Worms,2
+Green Apple,3.0,M,Gummy Worms,3
+Coconut,1.5,S,None,4
+Cherry,3.5,L,Nerds,5
+Bubblegum,3.5,L,Nerds,6
+Cotton Candy,1.5,S,None,7
+Grape,2.0,S,Nerds,8
+Coconut,3.0,M,Gummy Worms,9
+Strawberry,3,L,None,10
+Bubblegum,3.0,M,Nerds,11
+Green Apple,2.0,S,Nerds,12
+Spearmint,3,L,None,13
+Bubblegum,3.5,L,Gummy Worms,14
+Watermelon,3.0,M,Gummy Worms,15
+Green Apple,2.0,S,Nerds,16
+Bubblegum,3.0,M,Condensed Milk,17
+Green Apple,3.0,M,Condensed Milk,18
+Cherry,2.0,S,Gummy Worms,19
+Coconut,3.0,M,Condensed Milk,20
+Peach,2.0,S,Condensed Milk,21
+Green Apple,3.0,M,Condensed Milk,22
+Cherry,2.0,S,Gummy Worms,23
+Spearmint,3,L,None,24
+Grape,3,L,None,25
+Cotton Candy,2.0,S,Gummy Worms,26
+Coconut,2.5,M,None,27
+Cotton Candy,2.0,S,Gummy Worms,28
+Peach,2.0,S,Condensed Milk,29
+Strawberry,2.5,M,None,30
+Spearmint,3.0,M,Gummy Worms,31
+Spearmint,3.5,L,Condensed Milk,32
+Green Apple,1.5,S,None,33
+Cherry,2.0,S,Gummy Worms,34
+Spearmint,3.0,M,Nerds,35
+Watermelon,3,L,None,36
+Watermelon,1.5,S,None,37
+Watermelon,3.5,L,Condensed Milk,38
+Bubblegum,2.0,S,Condensed Milk,39
+Strawberry,3.5,L,Condensed Milk,40
+Strawberry,3,L,None,41
+Spearmint,3.0,M,Nerds,42
+Watermelon,3.0,M,Gummy Worms,43
+Cherry,2.5,M,None,44
+Grape,3.5,L,Condensed Milk,45
+Grape,3.0,M,Nerds,46
+Spearmint,3.0,M,Nerds,47
+Bubblegum,2.5,M,None,48
+Bubblegum,1.5,S,None,49
+Watermelon,1.5,S,None,50
+Spearmint,2.0,S,Condensed Milk,51
+Cherry,3.0,M,Gummy Worms,52
+Strawberry,3.5,L,Gummy Worms,53
+Green Apple,3.5,L,Gummy Worms,54
+Strawberry,2.0,S,Nerds,55
+Cotton Candy,1.5,S,None,56
+Grape,2.0,S,Nerds,57
+Spearmint,3.5,L,Nerds,58
+Peach,2.0,S,Condensed Milk,59
+Bubblegum,3,L,None,60
+Bubblegum,3.0,M,Condensed Milk,61
+Green Apple,2.5,M,None,62
+Cotton Candy,3.0,M,Gummy Worms,63
+Cotton Candy,2.5,M,None,64
+Bubblegum,3.5,L,Condensed Milk,65
+Peach,2.0,S,Condensed Milk,66
+Green Apple,3.5,L,Gummy Worms,67
+Cotton Candy,3.5,L,Gummy Worms,68
+Cherry,3.5,L,Condensed Milk,69
+Spearmint,3.0,M,Condensed Milk,70
+Green Apple,3.0,M,Nerds,71
+Cherry,2.5,M,None,72
+Bubblegum,3,L,None,73
+Coconut,1.5,S,None,74
+Strawberry,2.0,S,Nerds,75
+Peach,3,L,None,76
+Strawberry,1.5,S,None,77
+Green Apple,3.5,L,Condensed Milk,78
+Coconut,2.0,S,Condensed Milk,79
+Spearmint,3.0,M,Condensed Milk,80
+Spearmint,2.0,S,Nerds,81
+Bubblegum,2.5,M,None,82
+Bubblegum,1.5,S,None,83
+Grape,2.0,S,Gummy Worms,84
+Spearmint,3.0,M,Condensed Milk,85
+Watermelon,3.0,M,Nerds,86
+Cotton Candy,2.0,S,Condensed Milk,87
+Grape,2.0,S,Condensed Milk,88
+Green Apple,1.5,S,None,89
+Watermelon,3.5,L,Gummy Worms,90
+Cherry,2.0,S,Condensed Milk,91
+Strawberry,3.0,M,Nerds,92
+Green Apple,2.5,M,None,93
+Spearmint,2.5,M,None,94
+Strawberry,2.5,M,None,95
+Strawberry,3.5,L,Condensed Milk,96
+Green Apple,2.5,M,None,97
+Spearmint,3.0,M,Nerds,98
+Cherry,1.5,S,None,99
+Coconut,3.5,L,Nerds,100
