@@ -1,0 +1,7 @@
+2025-04-15 02:36:52,713 - INFO - Plot for 'Flavor' saved to output/flavor_distribution.png
+2025-04-15 02:36:52,833 - INFO - Plot for 'Size' saved to output/size_distribution.png
+2025-04-15 02:36:52,963 - INFO - Plot for 'Topping' saved to output/topping_distribution.png
+2025-04-15 02:36:53,096 - INFO - Plot for 'Price' saved to output/price_distribution.png
+2025-04-15 02:36:53,197 - INFO - Plot for 'Flavor' saved to output/flavor_violin.png
+2025-04-15 02:36:53,291 - INFO - Plot for 'Size' saved to output/size_boxplot.png
+2025-04-15 02:36:53,397 - INFO - Scatterplot saved to output/flavor_price_scatterplot.png

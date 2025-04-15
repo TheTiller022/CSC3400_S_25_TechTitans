@@ -28,11 +28,10 @@ if __name__ == "__main__":
 
 #
 #custom imports
-
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import logging
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,9 +39,13 @@ import matplotlib.pyplot as plt
 #%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logging.basicConfig(
+    filename=os.path.join('output','logs'),
+    level = logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='a')
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logger = logging.getLogger(__name__)
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Global declarations Start Here
@@ -62,13 +65,14 @@ class Frequency:
             self.data = pd.read_csv('Input/data.csv')
             self.data.columns = self.data.columns.str.strip()  # clean up column names
         except FileNotFoundError:
-            print("Error: 'Input/data.csv' not found.")
+            logger.error("Error: 'Input/data.csv' not found.")
+            
             self.data = pd.DataFrame()
         except pd.errors.EmptyDataError:
-            print("Error: 'Input/data.csv' is empty or unreadable.")
+            logger.error("Error: 'Input/data.csv' is empty or unreadable.")
             self.data = pd.DataFrame()
         except Exception as e:
-            print(f"Unexpected error loading CSV: {e}")
+            logger.error(f"Unexpected error loading CSV: {e}")
             self.data = pd.DataFrame()
 
         os.makedirs('output', exist_ok=True)
@@ -76,11 +80,11 @@ class Frequency:
     def visualize_column(self, column):
         """Visualize and save a plot for the given column based on its type."""
         if self.data.empty:
-            print("No data available to visualize.")
+            logger.warning("No data available to visualize.")
             return
 
         if column not in self.data.columns:
-            print(f"Error: Column '{column}' not found in dataset.")
+            logger.warning(f"Error: Column '{column}' not found in dataset.")
             return
 
         plot_path = f'output/{column.lower()}_distribution.png'
@@ -102,26 +106,26 @@ class Frequency:
             plt.tight_layout()
             plt.savefig(plot_path)
             plt.close()
-            print(f"Plot for '{column}' saved to {plot_path}")
+            logger.info(f"Plot for '{column}' saved to {plot_path}")
 
         except Exception as e:
-            print(f"Error generating plot for '{column}': {e}")
+            logger.error(f"Error generating plot for '{column}': {e}")
 
     def query_data(self, column, value):
         """Return rows where a column matches a value."""
         if self.data.empty:
-            print("No data available to query.")
+            logger.info("No data available to query.")
             return pd.DataFrame()
 
         if column not in self.data.columns:
-            print(f"Error: Column '{column}' not found in dataset.")
+            logger.error(f"Error: Column '{column}' not found in dataset.")
             return pd.DataFrame()
 
         try:
             result = self.data[self.data[column] == value]
             return result
         except Exception as e:
-            print(f"Error during query: {e}")
+            logger.error(f"Error during query: {e}")
             return pd.DataFrame()
 
 
