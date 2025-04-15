@@ -26,26 +26,26 @@ Doc:
 Notes:
     Applying the templete
 '''
-#%% IMPORTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-if __name__ == "__main__":
-    import os
-    #os.chdir("./../..")
-#
+#%% IMPORTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #custom imports
-import os
 from Lib.Frequency import Frequency
+#other imports
+import logging
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
-#other imports
-
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logging.basicConfig(
+    filename=os.path.join('output','logs'),
+    level = logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='a')
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logger = logging.getLogger(__name__)
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Global declarations Start Here
@@ -63,13 +63,13 @@ class Data_Frame(Frequency):
             self.data = pd.read_csv('Input/data.csv')
             self.data.columns = self.data.columns.str.strip()  # clean up column names
         except FileNotFoundError:
-            print("Error: 'Input/data.csv' not found.")
+            logger.error("Error: 'Input/data.csv' not found.")
             self.data = pd.DataFrame()
         except pd.errors.EmptyDataError:
-            print("Error: 'Input/data.csv' is empty or unreadable.")
+            logger.error("Error: 'Input/data.csv' is empty or unreadable.")
             self.data = pd.DataFrame()
         except Exception as e:
-            print(f"Unexpected error loading CSV: {e}")
+            logger.error(f"Unexpected error loading CSV: {e}")
             self.data = pd.DataFrame()
 
         os.makedirs('output', exist_ok=True)
@@ -78,11 +78,11 @@ class Data_Frame(Frequency):
     def visualize_violin(self, column):
         """Visualize and save a plot for the given column based on its type."""
         if self.data.empty:
-            print("No data available to visualize.")
+            logger.info("No data available to visualize.")
             return
 
         if column not in self.data.columns:
-            print(f"Error: Column '{column}' not found in dataset.")
+            logger.error(f"Error: Column '{column}' not found in dataset.")
             return
 
         plot_path = f'output/{column.lower()}_violin.png'
@@ -97,15 +97,15 @@ class Data_Frame(Frequency):
         plt.tight_layout()
         plt.savefig(plot_path)
         plt.close()
-        print(f"Plot for '{column}' saved to {plot_path}")
+        logger.info(f"Plot for '{column}' saved to {plot_path}")
 
     def visualize_boxplot(self, column):
         if self.data.empty:
-            print("No data available to visualize.")
+            logger.warning("No data available to visualize.")
             return
 
         if column not in self.data.columns:
-            print(f"Error: Column '{column}' not found in dataset.")
+            logger.error(f"Error: Column '{column}' not found in dataset.")
             return
 
         plot_path = f'output/{column.lower()}_boxplot.png'
@@ -118,19 +118,19 @@ class Data_Frame(Frequency):
         plt.tight_layout()
         plt.savefig(plot_path)
         plt.close()
-        print(f"Plot for '{column}' saved to {plot_path}")
+        logger.info(f"Plot for '{column}' saved to {plot_path}")
 
     def visualize_scatterplot(self, column1,column2):
         if self.data.empty:
-            print("No data available to visualize.")
+            logger.warning("No data available to visualize.")
             return
 
         if column1 not in self.data.columns:
-            print(f"Error: Column '{column1}' not found in dataset.")
+            logger.error(f"Error: Column '{column1}' not found in dataset.")
             return
         
         if column2 not in self.data.columns:
-            print(f"Error: Column '{column2}' not found in dataset.")
+            logger.error(f"Error: Column '{column2}' not found in dataset.")
             return
 
         plot_path = f'output/{column1.lower()}_{column2.lower()}_scatterplot.png'
@@ -142,7 +142,7 @@ class Data_Frame(Frequency):
         plt.tight_layout()
         plt.savefig(plot_path)
         plt.close()
-        print(f"Scatterplot saved to {plot_path}")
+        logger.info(f"Scatterplot saved to {plot_path}")
 
 #Function definitions Start Here
 def main():

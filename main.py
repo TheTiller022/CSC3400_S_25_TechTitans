@@ -20,13 +20,15 @@ Notes:
 if __name__ == "__main__":
     import os
     #os.chdir("./../..")
+import logging
 #
 #custom imports
 #import Input.Input_Module
 #import Lib.Data_Frame
-import Lib.Sales_Calculation
+#import Lib.Sales_Calculation
 #other imports
-
+from Lib.Frequency import Frequency
+from Lib.Data_Frame import Data_Frame
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,17 +36,17 @@ import Lib.Sales_Calculation
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logging.basicConfig(
+    filename=os.path.join('output','logs'),
+    level = logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='a')
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Global declarations Start Here
-
+logger = logging.getLogger(__name__)
 #Class definitions Start Here
-# main.py
-
-from Lib.Frequency import Frequency
-from Lib.Data_Frame import Data_Frame
-
+#Function definitions Start Here
 def main():
     f = Frequency()
 
@@ -61,13 +63,6 @@ def main():
     d.visualize_violin('Flavor')
     d.visualize_boxplot('Size')
     d.visualize_scatterplot('Flavor','Price')
-
-if __name__ == '__main__':
-    main()
-
-#Function definitions Start Here
-def main():
-    pass
 #
 #%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
