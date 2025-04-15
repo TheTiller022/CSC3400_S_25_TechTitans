@@ -60,7 +60,7 @@ def main():
     d = Data_Frame()
     d.visualize_violin('Flavor')
     d.visualize_boxplot('Size')
-    d.visualize_scatterplot('Flavor')
+    d.visualize_scatterplot('Flavor','Price')
 
 if __name__ == '__main__':
     main()
