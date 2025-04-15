@@ -32,8 +32,10 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 #custom imports
-import Frequency
+import os
+from Lib.Frequency import Frequency
 import pandas as pd
+import matplotlib.pyplot as plt
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,7 +51,7 @@ import pandas as pd
 #Global declarations Start Here
 
 #Class definitions Start Here
-class Data_Frame:
+class Data_Frame(Frequency):
     def __init__(self):
         self.config = {
             'default_plot_type': 'histogram',
@@ -72,6 +74,75 @@ class Data_Frame:
 
         os.makedirs('output', exist_ok=True)
         print(self.data)
+
+    def visualize_violin(self, column):
+        """Visualize and save a plot for the given column based on its type."""
+        if self.data.empty:
+            print("No data available to visualize.")
+            return
+
+        if column not in self.data.columns:
+            print(f"Error: Column '{column}' not found in dataset.")
+            return
+
+        plot_path = f'output/{column.lower()}_violin.png'
+
+        counts = self.data[column].value_counts()
+        plt.violinplot(counts)
+        plt.title(f'Distribution of {column}')
+        plt.xlabel(column)
+        plt.xticks([])
+        plt.ylabel('Frequency')
+
+        plt.tight_layout()
+        plt.savefig(plot_path)
+        plt.close()
+        print(f"Plot for '{column}' saved to {plot_path}")
+
+    def visualize_boxplot(self, column):
+        if self.data.empty:
+            print("No data available to visualize.")
+            return
+
+        if column not in self.data.columns:
+            print(f"Error: Column '{column}' not found in dataset.")
+            return
+
+        plot_path = f'output/{column.lower()}_boxplot.png'
+        counts = self.data[column].value_counts()
+        plt.boxplot(counts)
+        plt.title(f'Distribution of {column}')
+        plt.xlabel(column)
+        plt.ylabel('Frequency')
+        plt.xticks([])
+        plt.tight_layout()
+        plt.savefig(plot_path)
+        plt.close()
+        print(f"Plot for '{column}' saved to {plot_path}")
+
+    def visualize_scatterplot(self, column1,column2):
+        if self.data.empty:
+            print("No data available to visualize.")
+            return
+
+        if column1 not in self.data.columns:
+            print(f"Error: Column '{column1}' not found in dataset.")
+            return
+        
+        if column2 not in self.data.columns:
+            print(f"Error: Column '{column2}' not found in dataset.")
+            return
+
+        plot_path = f'output/{column1.lower()}_{column2.lower()}_scatterplot.png'
+        #counts = self.data[column].value_counts()
+        plt.plot(self.data[column1],self.data[column2],ls='',marker='o')
+        plt.xlabel(column1)
+        plt.ylabel(column2)
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig(plot_path)
+        plt.close()
+        print(f"Scatterplot saved to {plot_path}")
 
 #Function definitions Start Here
 def main():
