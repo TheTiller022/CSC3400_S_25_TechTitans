@@ -61,7 +61,7 @@ class Data_Frame(Frequency):
 
         try:
             self.data = pd.read_csv('Input/data.csv')
-            self.data.columns = self.data.columns.str.strip()  # clean up column names
+            self.data.columns = self.data.columns.str.strip()  
         except FileNotFoundError:
             logger.error("Error: 'Input/data.csv' not found.")
             self.data = pd.DataFrame()

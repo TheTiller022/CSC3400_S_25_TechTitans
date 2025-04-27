@@ -63,7 +63,7 @@ class Frequency:
 
         try:
             self.data = pd.read_csv('Input/data.csv')
-            self.data.columns = self.data.columns.str.strip()  # clean up column names
+            self.data.columns = self.data.columns.str.strip()  
         except FileNotFoundError:
             logger.error("Error: 'Input/data.csv' not found.")
             
@@ -78,7 +78,6 @@ class Frequency:
         os.makedirs('output', exist_ok=True)
 
     def visualize_column(self, column):
-        """Visualize and save a plot for the given column based on its type."""
         if self.data.empty:
             logger.warning("No data available to visualize.")
             return
@@ -112,7 +111,6 @@ class Frequency:
             logger.error(f"Error generating plot for '{column}': {e}")
 
     def query_data(self, column, value):
-        """Return rows where a column matches a value."""
         if self.data.empty:
             logger.info("No data available to query.")
             return pd.DataFrame()
