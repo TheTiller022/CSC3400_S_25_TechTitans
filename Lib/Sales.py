@@ -22,17 +22,14 @@ Notes:
     Applying the templete
 '''
 #%% IMPORTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-if __name__ == "__main__":
-    import os
-    #os.chdir("./../..")
+import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 #
 #custom imports
 import logging
-#other imports
-
-#%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 logging.basicConfig(
@@ -40,24 +37,14 @@ logging.basicConfig(
     level = logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     filemode='a')
+
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 logger = logging.getLogger(__name__)
+
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#Global declarations Start Here
-
 #Class definitions Start Here
-
-#Function definitions Start Here
-
 # Lib/Sales.py
-
-
-import os
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 class Sales:
     def __init__(self, pickle_path='Input/data.pkl'):
@@ -125,16 +112,4 @@ class Sales:
 
     def check_orthogonality(self, a, b):
         return np.isclose(np.dot(a, b), 0)
-
-def main():
-    pass
-
-#
-#%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#Main Self-run block
-if __name__ == "__main__":
-    print(f"\"{Sales}\" module begins.")
-    main()
-
 

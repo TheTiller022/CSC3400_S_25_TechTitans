@@ -55,17 +55,14 @@ Doc:
     <***>
 '''
 #%% IMPORTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-if __name__ == "__main__":
-    import os
-    #os.chdir("./../..")
+from Lib.Sales import Sales
+import pandas as pd
+from itertools import permutations, combinations
+import matplotlib.pyplot as plt
 #
 #custom imports
 import logging
 #other imports
-
-#%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 logging.basicConfig(
@@ -76,18 +73,9 @@ logging.basicConfig(
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 logger = logging.getLogger(__name__)
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#Global declarations Start Here
-
 #Class definitions Start Here
 
-#Function definitions Start Here
 # Lib/Sales_Calculation.py
-
-from Lib.Sales import Sales
-import pandas as pd
-from itertools import permutations, combinations
-import matplotlib.pyplot as plt
 
 class Sales_Calculation(Sales):
     def __init__(self, pickle_path='Input/data.pkl'):
@@ -149,15 +137,3 @@ class Sales_Calculation(Sales):
 
         except Exception as e:
             logger.error(f"Error generating stacked bar chart: {e}")
-
-
-
-def main():
-    pass
-#
-#%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#Main Self-run block
-if __name__ == "__main__":
-    print(f"\"{Sales_Calculation}\" module begins.")
-    main()
