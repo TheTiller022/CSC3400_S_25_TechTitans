@@ -32,11 +32,6 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import logging
-#other imports
-
-#%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 logging.basicConfig(
@@ -47,8 +42,6 @@ logging.basicConfig(
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 logger = logging.getLogger(__name__)
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#Global declarations Start Here
 
 #Class definitions Start Here
 # Parent class 1
@@ -125,23 +118,4 @@ class Frequency:
         except Exception as e:
             logger.error(f"Error during query: {e}")
             return pd.DataFrame()
-
-
-            
-'''
-class Data_Frame(Frequncy):
-    data = 0
-'''
-
-#Function definitions Start Here
-def main():
-    pass
-    
-#
-#%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#Main Self-run block
-if __name__ == "__main__":
-    print(f"\"{Frequency}\" module begins.")
-    main()
 
