@@ -60,7 +60,7 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 #custom imports
-
+import logging
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,9 +68,13 @@ if __name__ == "__main__":
 #%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logging.basicConfig(
+    filename=os.path.join('output','logs'),
+    level = logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='a')
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logger = logging.getLogger(__name__)
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Global declarations Start Here
@@ -91,7 +95,7 @@ class Sales_Calculation(Sales):
 
     def joint_counts(self, col1, col2):
         if col1 not in self.data.columns or col2 not in self.data.columns:
-            print(f"One or both columns not found.")
+            logger.error(f"One or both columns not found.")
             return None
         return pd.crosstab(self.data[col1], self.data[col2])
 
@@ -104,13 +108,13 @@ class Sales_Calculation(Sales):
 
     def conditional_probabilities(self, given_col, target_col):
         if given_col not in self.data.columns or target_col not in self.data.columns:
-            print(f"One or both columns not found.")
+            logger.error(f"One or both columns not found.")
             return None
         return pd.crosstab(self.data[target_col], self.data[given_col], normalize='columns')
 
     def unique_values(self, col):
         if col not in self.data.columns:
-            print(f"Column '{col}' not found.")
+            logger.error(f"Column '{col}' not found.")
             return []
         return self.data[col].unique()
 
@@ -124,7 +128,7 @@ class Sales_Calculation(Sales):
 
     def plot_stacked_bar(self, given_col, target_col):
         if given_col not in self.data.columns or target_col not in self.data.columns:
-            print(f"One or both columns not found.")
+            logger.error(f"One or both columns not found.")
             return
 
         try:
@@ -141,10 +145,10 @@ class Sales_Calculation(Sales):
             output_file = f"{self.config['output_dir']}/StackedBar_{target_col}_given_{given_col}.png"
             plt.savefig(output_file)
             plt.close()
-            print(f"Saved: {output_file}")
+            logger.info(f"Saved: {output_file}")
 
         except Exception as e:
-            print(f"Error generating stacked bar chart: {e}")
+            logger.error(f"Error generating stacked bar chart: {e}")
 
 
 

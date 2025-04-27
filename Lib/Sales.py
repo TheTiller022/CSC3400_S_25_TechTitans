@@ -27,7 +27,7 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 #custom imports
-
+import logging
 #other imports
 
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,9 +35,13 @@ if __name__ == "__main__":
 #%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logging.basicConfig(
+    filename=os.path.join('output','logs'),
+    level = logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='a')
 #%% INITIALIZATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+logger = logging.getLogger(__name__)
 #%% DECLARATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Global declarations Start Here
@@ -64,14 +68,14 @@ class Sales:
                 'output_dir': 'output'
             }
             os.makedirs(self.config['output_dir'], exist_ok=True)
-            print(f"Data loaded from {pickle_path}")
+            logger.info(f"Data loaded from {pickle_path}")
         except Exception as e:
-            print(f"Failed to load pickle file: {e}")
+            logger.error(f"Failed to load pickle file: {e}")
             self.data = pd.DataFrame()
 
     def visualize_column(self, column):
         if column not in self.data.columns:
-            print(f"Column '{column}' not found.")
+            logger.error(f"Column '{column}' not found.")
             return
 
         output_file = f"{self.config['output_dir']}/{column.lower()}_distribution.png"
@@ -92,13 +96,13 @@ class Sales:
             plt.tight_layout()
             plt.savefig(output_file)
             plt.close()
-            print(f"Saved: {output_file}")
+            logger.info(f"Saved: {output_file}")
         except Exception as e:
-            print(f"Error generating plot for {column}: {e}")
+            logger.error(f"Error generating plot for {column}: {e}")
 
     def basic_stats(self, column):
         if column not in self.data.columns:
-            print(f"Column '{column}' not found.")
+            logger.error(f"Column '{column}' not found.")
             return None
         return {
             'mean': self.data[column].mean(),
