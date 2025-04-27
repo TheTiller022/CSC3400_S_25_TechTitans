@@ -76,12 +76,78 @@ if __name__ == "__main__":
 #Global declarations Start Here
 
 #Class definitions Start Here
-class Sales:
-    sales = 0
-    
-class Sales_Calculations(Sales):
-    sales = 0
+
 #Function definitions Start Here
+# Lib/Sales_Calculation.py
+
+from Lib.Sales import Sales
+import pandas as pd
+from itertools import permutations, combinations
+import matplotlib.pyplot as plt
+
+class Sales_Calculation(Sales):
+    def __init__(self, pickle_path='Input/data.pkl'):
+        super().__init__(pickle_path)
+
+    def joint_counts(self, col1, col2):
+        if col1 not in self.data.columns or col2 not in self.data.columns:
+            print(f"One or both columns not found.")
+            return None
+        return pd.crosstab(self.data[col1], self.data[col2])
+
+    def joint_probabilities(self, col1, col2):
+        joint = self.joint_counts(col1, col2)
+        if joint is not None:
+            return joint / joint.values.sum()
+        else:
+            return None
+
+    def conditional_probabilities(self, given_col, target_col):
+        if given_col not in self.data.columns or target_col not in self.data.columns:
+            print(f"One or both columns not found.")
+            return None
+        return pd.crosstab(self.data[target_col], self.data[given_col], normalize='columns')
+
+    def unique_values(self, col):
+        if col not in self.data.columns:
+            print(f"Column '{col}' not found.")
+            return []
+        return self.data[col].unique()
+
+    def generate_permutations(self, col, r=2):
+        values = self.unique_values(col)
+        return list(permutations(values, r))
+
+    def generate_combinations(self, col, r=2):
+        values = self.unique_values(col)
+        return list(combinations(values, r))
+
+    def plot_stacked_bar(self, given_col, target_col):
+        if given_col not in self.data.columns or target_col not in self.data.columns:
+            print(f"One or both columns not found.")
+            return
+
+        try:
+            cond_probs = pd.crosstab(self.data[target_col], self.data[given_col], normalize='columns')
+            cond_probs.plot(kind='bar', stacked=True, figsize=(10, 6), colormap='viridis')
+
+            plt.title(f'Stacked Bar Chart of {target_col} given {given_col}')
+            plt.xlabel(target_col)
+            plt.ylabel('Conditional Probability')
+            plt.legend(title=given_col, bbox_to_anchor=(1.05, 1), loc='upper left')
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+
+            output_file = f"{self.config['output_dir']}/StackedBar_{target_col}_given_{given_col}.png"
+            plt.savefig(output_file)
+            plt.close()
+            print(f"Saved: {output_file}")
+
+        except Exception as e:
+            print(f"Error generating stacked bar chart: {e}")
+
+
+
 def main():
     pass
 #

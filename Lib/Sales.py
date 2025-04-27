@@ -45,8 +45,86 @@ if __name__ == "__main__":
 #Class definitions Start Here
 
 #Function definitions Start Here
+
+# Lib/Sales.py
+
+
+import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+class Sales:
+    def __init__(self, pickle_path='Input/data.pkl'):
+        try:
+            self.data = pd.read_pickle(pickle_path)
+            self.config = {
+                'columns_to_plot': ['Flavor', 'Size', 'Topping', 'Price'],
+                'output_dir': 'output'
+            }
+            os.makedirs(self.config['output_dir'], exist_ok=True)
+            print(f"Data loaded from {pickle_path}")
+        except Exception as e:
+            print(f"Failed to load pickle file: {e}")
+            self.data = pd.DataFrame()
+
+    def visualize_column(self, column):
+        if column not in self.data.columns:
+            print(f"Column '{column}' not found.")
+            return
+
+        output_file = f"{self.config['output_dir']}/{column.lower()}_distribution.png"
+        try:
+            plt.figure(figsize=(8, 5))
+
+            if self.data[column].dtype == 'object':
+                counts = self.data[column].value_counts()
+                counts.plot(kind='bar', color='skyblue')
+                plt.ylabel('Count')
+            else:
+                self.data[column].plot(kind='hist', bins=10, edgecolor='black')
+                plt.ylabel('Frequency')
+
+            plt.title(f'Distribution of {column}')
+            plt.xlabel(column)
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            plt.savefig(output_file)
+            plt.close()
+            print(f"Saved: {output_file}")
+        except Exception as e:
+            print(f"Error generating plot for {column}: {e}")
+
+    def basic_stats(self, column):
+        if column not in self.data.columns:
+            print(f"Column '{column}' not found.")
+            return None
+        return {
+            'mean': self.data[column].mean(),
+            'median': self.data[column].median(),
+            'std': self.data[column].std()
+        }
+
+    def position_vector(self, column):
+        return self.data[column].values
+
+    def unit_vector(self, vector):
+        norm = np.linalg.norm(vector)
+        return vector / norm if norm != 0 else vector
+
+    def dot_product(self, a, b):
+        return np.dot(a, b)
+
+    def projection_vector(self, a, b):
+        return (np.dot(a, b) / np.dot(b, b)) * b
+
+    def check_orthogonality(self, a, b):
+        return np.isclose(np.dot(a, b), 0)
+
 def main():
     pass
+
 #
 #%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
