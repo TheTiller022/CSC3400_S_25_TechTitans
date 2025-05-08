@@ -34,6 +34,8 @@ import logging
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sb
+
 #%% USER INTERFACE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #%% CONSTANTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,18 +87,17 @@ class Data_Frame(Frequency):
             logger.error(f"Error: Column '{column}' not found in dataset.")
             return
 
+        
         plot_path = f'output/{column.lower()}_violin.png'
-
-        counts = self.data[column].value_counts()
-        plt.violinplot(counts)
+        temp = pd.DataFrame({column: self.data[column]})
+        #plt.figure(figsize=(6,8))
+        sb.violinplot(data = temp, y = column)
         plt.title(f'Distribution of {column}')
-        plt.xlabel(column)
-        plt.xticks([])
-        plt.ylabel('Frequency')
-
-        plt.tight_layout()
+        plt.xlabel('Number Purchased')
+        plt.ylabel(column)
         plt.savefig(plot_path)
         plt.close()
+        
         logger.info(f"Plot for '{column}' saved to {plot_path}")
 
     def visualize_boxplot(self, column):
@@ -120,7 +121,7 @@ class Data_Frame(Frequency):
         plt.close()
         logger.info(f"Plot for '{column}' saved to {plot_path}")
 
-    def visualize_scatterplot(self, column1,column2):
+    def visualize_scatterplot(self, column1,column2, column3):
         if self.data.empty:
             logger.warning("No data available to visualize.")
             return
@@ -135,7 +136,11 @@ class Data_Frame(Frequency):
 
         plot_path = f'output/{column1.lower()}_{column2.lower()}_scatterplot.png'
         #counts = self.data[column].value_counts()
-        plt.plot(self.data[column1],self.data[column2],ls='',marker='o')
+        #plt.plot(self.data[column1],self.data[column2],ls='',marker='o')
+            
+        plt.figure(figsize=(8,6))
+        sb.scatterplot(data=self.data, x=column1, y=column2, hue = column3)
+        plt.title(f'Distribution of {column1} per {column2} by {column3}')
         plt.xlabel(column1)
         plt.ylabel(column2)
         plt.xticks(rotation=45)

@@ -79,9 +79,9 @@ def main():
     print(result)
 
     d = Data_Frame()
-    d.visualize_violin('Flavor')
+    d.visualize_violin('Price')
     d.visualize_boxplot('Size')
-    d.visualize_scatterplot('Flavor', 'Price')
+    d.visualize_scatterplot('Flavor', 'Price', 'Size')
 
     s = Sales_Calculation()
 
@@ -90,11 +90,13 @@ def main():
         print(f"Generating distribution plot for {col}...")
         s.visualize_column(col)
 
+    
     print("\nBasic Statistics for 'Price':")
     stats = s.basic_stats('Price')
     for stat_name, stat_value in stats.items():
         print(f"{stat_name.capitalize()}: {stat_value:.2f}")
-
+    
+    
     print("\nVector Operations on 'Price':")
     price_vector = s.position_vector('Price')
     unit_vec = s.unit_vector(price_vector)
@@ -130,6 +132,7 @@ def main():
     print("\nCombinations of Topping (r=2):")
     combs = s.generate_combinations('Topping', r=2)
     print(combs[:5])  
+    
 
 #
 #%% SELF-RUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
