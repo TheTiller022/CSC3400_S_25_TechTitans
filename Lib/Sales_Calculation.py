@@ -59,6 +59,7 @@ from Lib.Sales import Sales
 import pandas as pd
 from itertools import permutations, combinations
 import matplotlib.pyplot as plt
+import os
 #
 #custom imports
 import logging
@@ -137,3 +138,4 @@ class Sales_Calculation(Sales):
 
         except Exception as e:
             logger.error(f"Error generating stacked bar chart: {e}")
+    

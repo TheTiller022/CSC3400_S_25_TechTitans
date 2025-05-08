@@ -118,4 +118,4 @@ class Frequency:
         except Exception as e:
             logger.error(f"Error during query: {e}")
             return pd.DataFrame()
-
+    
