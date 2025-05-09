@@ -49,6 +49,10 @@ logger = logging.getLogger(__name__)
 class Sales:
     def __init__(self, pickle_path='Input/data.pkl'):
         try:
+            df = pd.read_csv('Input/data.csv')
+            df.columns = df.columns.str.strip()
+            os.makedirs(os.path.dirname(pickle_path), exist_ok=True)
+            df.to_pickle(pickle_path)
             self.data = pd.read_pickle(pickle_path)
             self.config = {
                 'columns_to_plot': ['Flavor', 'Size', 'Topping', 'Price'],
@@ -61,7 +65,8 @@ class Sales:
             self.data = pd.DataFrame()
 
     def visualize_column(self, column):
-        if column not in self.data.columns:
+        #print(f'config: {self.config}')
+        if column not in self.config['columns_to_plot']:
             logger.error(f"Column '{column}' not found.")
             return
 
@@ -86,16 +91,17 @@ class Sales:
             logger.info(f"Saved: {output_file}")
         except Exception as e:
             logger.error(f"Error generating plot for {column}: {e}")
-
+    
     def basic_stats(self, column):
-        if column not in self.data.columns:
+        if column not in self.config['columns_to_plot']:
             logger.error(f"Column '{column}' not found.")
             return None
-        return {
-            'mean': self.data[column].mean(),
-            'median': self.data[column].median(),
-            'std': self.data[column].std()
-        }
+        else:
+            return {
+                'mean': self.data[column].mean(),
+                'median': self.data[column].median(),
+                'std': self.data[column].std()
+            }
 
     def position_vector(self, column):
         return self.data[column].values
@@ -112,4 +118,11 @@ class Sales:
 
     def check_orthogonality(self, a, b):
         return np.isclose(np.dot(a, b), 0)
-
+    
+    def total_sales(self):
+        my_lambda = lambda a, b: a + b
+        total = 0
+        for row in self.data['Price']:
+            total = my_lambda(total, row)
+        return total
+        

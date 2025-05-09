@@ -84,7 +84,7 @@ def main():
     d.visualize_scatterplot('Flavor', 'Price', 'Size')
 
     s = Sales_Calculation()
-
+    print('\n')
     columns = ['Flavor', 'Size', 'Topping', 'Price']
     for col in columns:
         print(f"Generating distribution plot for {col}...")
@@ -132,6 +132,10 @@ def main():
     print("\nCombinations of Topping (r=2):")
     combs = s.generate_combinations('Topping', r=2)
     print(combs[:5])  
+    
+    print("\nTotal Sales:")
+    total = s.total_sales()
+    print(f'${total}')
     
 
 #
