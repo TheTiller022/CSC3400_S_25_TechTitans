@@ -118,4 +118,9 @@ class Frequency:
         except Exception as e:
             logger.error(f"Error during query: {e}")
             return pd.DataFrame()
-    
+        
+    def find_flavor(self,*args):
+        result = ""
+        for flavor in args:
+            result = result+" "+self.data[self.data['Flavor'] == flavor]
+        return result
