@@ -75,7 +75,7 @@ class Data_Frame(Frequency):
             self.data = pd.DataFrame()
 
         os.makedirs('output', exist_ok=True)
-        print(self.data)
+        #print(self.data)
 
     def visualize_violin(self, column):
         """Visualize and save a plot for the given column based on its type."""
